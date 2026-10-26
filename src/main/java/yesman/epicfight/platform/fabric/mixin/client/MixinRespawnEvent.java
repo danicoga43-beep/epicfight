@@ -30,22 +30,19 @@ import yesman.epicfight.platform.fabric.shim.clientevent.MovementInputUpdateEven
 
 @Mixin(ClientPacketListener.class)
 public abstract class MixinRespawnEvent {
-    @Shadow
-    private Minecraft minecraft;
-
     @Unique
     private LocalPlayer epicfight$oldPlayer;
 
     // ClientPlayerNetworkEvent.Clone
     @Inject(method = "handleRespawn", at = @At("HEAD"))
     private void epicfight$respawnHead(net.minecraft.network.protocol.game.ClientboundRespawnPacket packet, CallbackInfo ci) {
-        this.epicfight$oldPlayer = this.minecraft.player;
+        this.epicfight$oldPlayer = Minecraft.getInstance().player;
     }
 
     @Inject(method = "handleRespawn", at = @At("TAIL"))
     private void epicfight$respawnTail(net.minecraft.network.protocol.game.ClientboundRespawnPacket packet, CallbackInfo ci) {
-        if (this.epicfight$oldPlayer != null && this.minecraft.player != null) {
-            VanillaGeneralClientEventHooks.onClonedInClient(this.epicfight$oldPlayer, this.minecraft.player);
+        if (this.epicfight$oldPlayer != null && Minecraft.getInstance().player != null) {
+            VanillaGeneralClientEventHooks.onClonedInClient(this.epicfight$oldPlayer, Minecraft.getInstance().player);
         }
     }
 }
