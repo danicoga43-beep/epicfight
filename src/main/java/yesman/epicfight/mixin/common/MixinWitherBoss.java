@@ -191,7 +191,7 @@ public abstract class MixinWitherBoss extends Monster implements PowerableMob, R
 								double d0 = Mth.nextDouble(self.getRandom(), self.getX() - 10.0D, self.getX() + 10.0D);
 								double d1 = Mth.nextDouble(self.getRandom(), self.getY() - 5.0D, self.getY() + 5.0D);
 								double d2 = Mth.nextDouble(self.getRandom(), self.getZ() - 10.0D, self.getZ() + 10.0D);
-								self$Accessor.invoke_performRangedAttack(i + 1, d0, d1, d2, true);
+								((MixinWitherBossRangedAccessor)self$Accessor).invoke_performRangedAttack(i + 1, d0, d1, d2, true);
 								this.idleHeadUpdates[i - 1] = 0;
 							}
 						}
