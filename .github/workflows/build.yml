@@ -21,12 +21,24 @@ jobs:
           chmod +x gradlew
           set -o pipefail
           ./gradlew build --stacktrace --no-daemon 2>&1 | tee build.log
+      - name: Ringkasan error (tab Summary)
+        if: failure()
+        run: |
+          {
+            echo "## Error build"
+            echo '```'
+            grep -E "error:|warning: Cannot find|What went wrong" -A3 build.log | head -120 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Upload mod jar
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: epicfight-fabric-jar
-          path: build/libs/*.jar
+          path: |
+            build/libs/*.jar
+            !build/libs/*-sources.jar
       - name: Upload build log
         if: always()
         uses: actions/upload-artifact@v4
