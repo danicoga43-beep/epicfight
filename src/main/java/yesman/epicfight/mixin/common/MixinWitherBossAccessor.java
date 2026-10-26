@@ -35,9 +35,9 @@ public interface MixinWitherBossAccessor {
 	@Invoker(value = "getHeadZ")
 	public double invoke_getHeadZ(int head);
 	
-	@Invoker(value = "performRangedAttack(ILnet/minecraft/world/entity/LivingEntity;)V")
+	@Invoker(value = "performRangedAttack")
 	public void invoke_performRangedAttack(int head, LivingEntity target);
 	
-	@Invoker(value = "performRangedAttack(IDDDZ)V")
+	@Invoker(value = "performRangedAttack")
 	public void invoke_performRangedAttack(int head, double x, double y, double z, boolean isDangerous);
 }
