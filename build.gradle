@@ -35,6 +35,8 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
     modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${project.forgeconfigapiport_version}"
+    // Ikut dibundel di dalam jar (jar-in-jar), jadi cukup Fabric API + jar Epic Fight ini
+    include "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${project.forgeconfigapiport_version}"
     modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
 
     // Anotasi yang dipakai source asli (di NeoForge sudah tersedia lewat classpath Minecraft)
