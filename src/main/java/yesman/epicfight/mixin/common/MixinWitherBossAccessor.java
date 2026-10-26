@@ -37,7 +37,4 @@ public interface MixinWitherBossAccessor {
 	
 	@Invoker(value = "performRangedAttack")
 	public void invoke_performRangedAttack(int head, LivingEntity target);
-	
-	@Invoker(value = "performRangedAttack")
-	public void invoke_performRangedAttack(int head, double x, double y, double z, boolean isDangerous);
 }
