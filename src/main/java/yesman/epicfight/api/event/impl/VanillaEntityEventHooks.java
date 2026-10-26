@@ -84,6 +84,8 @@ public final class VanillaEntityEventHooks {
         EpicFightCapabilities.getUnparameterizedEntityPatch(entity, EntityPatch.class).ifPresent(entitypatch -> {
             if (entitypatch.uninitialized()) {
                 entitypatch.onJoinWorld(entity, level, worldgen);
+                // NeoForge memanggil Entity#onAddedToLevel (tidak ada di vanilla); di Fabric dipanggil dari sini.
+                entitypatch.onAddedToLevel();
             }
         });
     }
