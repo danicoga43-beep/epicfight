@@ -1,0 +1,11 @@
+{
+    "trail": {
+        "color": [200, 60, 60],
+        "begin_pos": [0.0, 0.0, 0.1],
+        "end_pos": [0.0, 0.0, -0.9],
+        "lifetime": 6,
+        "interpolations": 10,
+        "texture_path": "efn:textures/trail/crimson_moon_trail.png",
+        "particle_type": "epicfight:swing_trail"
+    }
+}
